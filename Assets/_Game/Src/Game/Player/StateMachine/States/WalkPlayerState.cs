@@ -4,11 +4,7 @@ namespace Desire.Game.Player.StateMachine.States
 {
     public class WalkPlayerState : BaseStatePlayer
     {
-        public WalkPlayerState(PlayerBehaviour playerBehaviour)
-        {
-            Player = playerBehaviour;
-            Name = "Walk";
-        }
+        public WalkPlayerState(PlayerBehaviour playerBehaviour): base(playerBehaviour, "Walk"){}
 
         public override void StartState()
         {
@@ -19,9 +15,9 @@ namespace Desire.Game.Player.StateMachine.States
 
         public override void UpdateState(float deltaTime)
         {
-            if (Player.IsAttack)
+            if (Player.IsAttack && Player.Attacks.Count > 0)
             {
-                //Player.SwitchState(new AttackPlayerState(Player,0));
+                Player.SwitchState(new AttackPlayerState(Player,0));
                 return;
             }
             
@@ -33,6 +29,11 @@ namespace Desire.Game.Player.StateMachine.States
 
         public override void FixedUpdateState(float deltaTime)
         {
+            if (Player.IsJump && Player.CheckGround.IsGrounded())
+            {
+                Player.Movement.Jump();
+            }
+            
             Move(deltaTime, Player.MovementDirection);
         }
     }

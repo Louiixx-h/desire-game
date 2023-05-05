@@ -4,8 +4,14 @@ namespace Desire.Game.Player.StateMachine.States
 {
     public abstract class BaseStatePlayer : IState
     {
-        protected string Name;
+        public string Name;
         protected PlayerBehaviour Player;
+        
+        protected BaseStatePlayer(PlayerBehaviour player, string name)
+        {
+            Player = player;
+            Name = name;
+        }
         
         public abstract void StartState();
         public abstract void EndState();
@@ -20,6 +26,11 @@ namespace Desire.Game.Player.StateMachine.States
         protected void Move(float deltaTime, Vector2 motion)
         {            
             Player.Movement.Tick(deltaTime, motion);
+        }
+
+        protected void Jump()
+        {
+            Player.Movement.Jump();
         }
     }
 }

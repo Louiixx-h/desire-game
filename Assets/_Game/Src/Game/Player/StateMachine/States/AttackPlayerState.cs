@@ -5,15 +5,11 @@ namespace Desire.Game.Player.StateMachine.States
 {
     public class AttackPlayerState : BaseStatePlayer
     {
-        private readonly int _indexAttack;
         private readonly Attack _currentAttack;
         
-        public AttackPlayerState(PlayerBehaviour playerBehaviour, int indexAttack)
+        public AttackPlayerState(PlayerBehaviour playerBehaviour, int indexAttack): base(playerBehaviour, "Attack")
         {
-            Player = playerBehaviour;
-            _indexAttack = indexAttack;
-            _currentAttack = Player.Attacks[_indexAttack];
-            Name = "Attack";
+            _currentAttack = Player.Attacks[indexAttack];
         }
 
         public override void StartState()
