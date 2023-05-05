@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace _Game.Src.Game.Inputs
+namespace Desire.Game.Inputs
 {
     public class InputPlayerActions : MonoBehaviour, Controls.IPlayerActions
     {
