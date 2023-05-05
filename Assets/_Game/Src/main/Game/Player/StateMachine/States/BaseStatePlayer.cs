@@ -20,7 +20,7 @@ namespace Desire.Game.Player.StateMachine.States
 
         protected void Move(float deltaTime)
         {
-            Player.Movement.Tick(deltaTime);
+            Move(deltaTime, Vector2.zero);
         }
         
         protected void Move(float deltaTime, Vector2 motion)
