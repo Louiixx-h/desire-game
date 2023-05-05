@@ -16,11 +16,6 @@ namespace Desire.Game.Behaviours
             _sprite = sprite;
             _jumpForce = jumpForce;
         }
-
-        public void Tick(float deltaTime)
-        {
-            Tick(deltaTime, Vector2.zero);
-        }
         
         public void Tick(float deltaTime, Vector2 motion)
         {
