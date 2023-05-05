@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 285865888}
   - component: {fileID: 285865887}
   - component: {fileID: 285865889}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5874,6 +5874,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
+  jumpForce: 80
+  checkRadius: 0.2
+  groundPosition: {fileID: 8875639481378175}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
   sprite: {fileID: 8875638102451786}
   <Attacks>k__BackingField: []
 --- !u!114 &8875638102451801
