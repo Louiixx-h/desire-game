@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Desire.DI;
 using Desire.Game.Behaviours;
 using Desire.Game.Behaviours.Combat;
 using Desire.Game.Inputs;
@@ -33,6 +34,9 @@ namespace Desire.Game.Player
         
         [SerializeField]
         private SpriteRenderer sprite;
+
+        [Inject(InjectFrom.Anywhere)]
+        private DataDialog _dataDialog;
         
         private Rigidbody2D _rigidbody;
         private InputPlayerActions _inputs;
