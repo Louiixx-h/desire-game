@@ -1,12 +1,12 @@
 using System.Collections.Generic;
-using _Game.Src.Game.Behaviours;
-using _Game.Src.Game.Behaviours.Combat;
-using _Game.Src.Game.Inputs;
-using _Game.Src.Game.Player.StateMachine;
-using _Game.Src.Game.Player.StateMachine.States;
+using Desire.Game.Behaviours;
+using Desire.Game.Behaviours.Combat;
+using Desire.Game.Inputs;
+using Desire.Game.Player.StateMachine;
+using Desire.Game.Player.StateMachine.States;
 using UnityEngine;
 
-namespace _Game.Src.Game.Player
+namespace Desire.Game.Player
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(InputPlayerActions))]

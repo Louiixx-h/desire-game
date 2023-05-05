@@ -1,4 +1,4 @@
-namespace _Game.Src.Game.Player.StateMachine.States
+namespace Desire.Game.Player.StateMachine.States
 {
     public interface IState
     {

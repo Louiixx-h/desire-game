@@ -1,7 +1,7 @@
-using _Game.Src.Game.Behaviours.Combat;
+using Desire.Game.Behaviours.Combat;
 using UnityEngine;
 
-namespace _Game.Src.Game.Player.StateMachine.States
+namespace Desire.Game.Player.StateMachine.States
 {
     public class AttackPlayerState : BaseStatePlayer
     {

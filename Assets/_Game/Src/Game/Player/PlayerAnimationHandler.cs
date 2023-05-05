@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace _Game.Src.Game.Player
+namespace Desire.Game.Player
 {
     public class PlayerAnimationHandler
     {

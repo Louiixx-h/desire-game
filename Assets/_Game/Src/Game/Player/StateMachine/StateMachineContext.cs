@@ -1,6 +1,6 @@
-using _Game.Src.Game.Player.StateMachine.States;
+using Desire.Game.Player.StateMachine.States;
 
-namespace _Game.Src.Game.Player.StateMachine
+namespace Desire.Game.Player.StateMachine
 {
     public class StateMachineContext: IStateMachineContext
     {

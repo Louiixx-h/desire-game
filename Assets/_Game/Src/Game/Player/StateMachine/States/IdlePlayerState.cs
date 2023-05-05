@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace _Game.Src.Game.Player.StateMachine.States
+namespace Desire.Game.Player.StateMachine.States
 {
     public class IdlePlayerState : BaseStatePlayer
     {

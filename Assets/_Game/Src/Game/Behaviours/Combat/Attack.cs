@@ -1,6 +1,6 @@
 using System;
 
-namespace _Game.Src.Game.Behaviours.Combat
+namespace Desire.Game.Behaviours.Combat
 {
     [Serializable]
     public struct Attack
