@@ -51,38 +51,17 @@ namespace Desire.Game.Inputs
 
         void Controls.IPlayerActions.OnFire(InputAction.CallbackContext context)
         {
-            context.action.performed += ctx =>
-            {
-                OnFire?.Invoke(ctx.ReadValueAsButton());
-            };
-            context.action.canceled += ctx =>
-            {
-                OnFire?.Invoke(ctx.ReadValueAsButton());
-            };
+            OnFire?.Invoke(context.ReadValueAsButton());
         }
 
         void Controls.IPlayerActions.OnJump(InputAction.CallbackContext context)
         {
-            context.action.performed += ctx =>
-            {
-                OnAction?.Invoke(ctx.ReadValueAsButton());
-            };
-            context.action.canceled += ctx =>
-            {
-                OnAction?.Invoke(ctx.ReadValueAsButton());
-            };
+            OnJump?.Invoke(context.ReadValueAsButton());
         }
 
         void Controls.IPlayerActions.OnAction(InputAction.CallbackContext context)
         {
-            context.action.performed += ctx =>
-            {
-                OnJump?.Invoke(ctx.ReadValueAsButton());
-            };
-            context.action.canceled += ctx =>
-            {
-                OnJump?.Invoke(ctx.ReadValueAsButton());
-            };
+            OnJump?.Invoke(context.ReadValueAsButton());
         }
     }
 }
