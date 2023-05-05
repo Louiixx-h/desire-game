@@ -24,17 +24,17 @@ namespace Desire.Game.Player.StateMachine.States
             if (Player.MovementDirection != Vector2.zero)
             {
                 Player.SwitchState(new WalkPlayerState(Player));
+                return;
+            }
+            
+            if (Player.IsJump && Player.CheckGround.IsGrounded())
+            {
+                Player.SwitchState(new JumpPlayerState(Player));
             }
         }
 
         public override void FixedUpdateState(float deltaTime)
         {
-            if (Player.IsJump && Player.CheckGround.IsGrounded())
-            {
-                Player.Movement.Jump();
-                return;
-            }
-            
             Move(deltaTime);
         }
     }
