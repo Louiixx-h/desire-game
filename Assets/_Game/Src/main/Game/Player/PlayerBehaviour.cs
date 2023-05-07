@@ -1,9 +1,10 @@
-using System.Collections.Generic;
+using Desire.DI;
 using Desire.Game.Behaviours;
 using Desire.Game.Behaviours.Combat;
 using Desire.Game.Inputs;
 using Desire.Game.Player.StateMachine;
 using Desire.Game.Player.StateMachine.States;
+using Desire.Ui;
 using UnityEngine;
 
 namespace Desire.Game.Player
@@ -33,29 +34,43 @@ namespace Desire.Game.Player
         
         [SerializeField]
         private SpriteRenderer sprite;
+        
+        [Header("Combat")]
 
+        [SerializeField]                   
+        private Transform weaponTransform; 
+        [field:SerializeField]
+        public WeaponConfig WeaponConfig { get; private set; }
+
+        [HideInInspector]
+        [Inject(InjectFrom.Anywhere)] 
+        public UiHealthPlayer uiHealth;
+        
+        private IHealth _health;
         private Rigidbody2D _rigidbody;
         private InputPlayerActions _inputs;
         private Animator _animator;
         private IStateMachineContext _stateMachineContext;
 
-        [field:SerializeField] 
-        public List<Attack> Attacks  { get; private set; }
         public Vector2 MovementDirection { get; private set; }
         public bool IsAttack { get; private set; }
+        public bool IsDead { get; private set; }
         public bool IsJump { get; private set; }
+        public Melee Melee { get; private set; }
         public Movement Movement { get; private set; }
         public CheckGround CheckGround { get; private set; }
         public PlayerAnimationHandler PlayerAnimationHandler { get; private set; }
 
         private void Awake()
         {
+            _health = GetComponent<Health>();
             _animator = GetComponent<Animator>();
             _inputs = GetComponent<InputPlayerActions>();
             _rigidbody = GetComponent<Rigidbody2D>();
             _stateMachineContext = new StateMachineContext();
             
             MovementDirection = Vector2.zero;
+            Melee = new Melee(WeaponConfig, weaponTransform);
             Movement = new Movement(sprite, movementSpeed, _rigidbody, jumpForce);
             CheckGround = new CheckGround(groundPosition, checkRadius, groundLayer);
             PlayerAnimationHandler = new PlayerAnimationHandler(_animator);
@@ -64,6 +79,7 @@ namespace Desire.Game.Player
         private void Start()
         {
             SwitchState(new IdlePlayerState(this));
+            _health.TakeMaxLife();
         }
 
         private void OnEnable()
@@ -71,6 +87,7 @@ namespace Desire.Game.Player
             _inputs.OnFire += OnInputAttack;
             _inputs.OnMotion += OnInputMotion;
             _inputs.OnJump += OnInputJump;
+            _health.OnChangeLife += OnChangeLife;
         }
 
         private void OnDisable()
@@ -78,6 +95,7 @@ namespace Desire.Game.Player
             _inputs.OnFire -= OnInputAttack;
             _inputs.OnMotion -= OnInputMotion;
             _inputs.OnJump -= OnInputJump;
+            _health.OnChangeLife += OnChangeLife;
         }
 
         private void Update()
@@ -103,6 +121,28 @@ namespace Desire.Game.Player
         private void OnInputMotion(Vector2 motion)
         {
             MovementDirection = motion;
+
+            var pos = weaponTransform.localPosition;
+            if (motion.x > 0)
+            {
+                weaponTransform.localPosition = new Vector3(-1.7f, pos.y, pos.z);
+            }
+            
+            if (motion.x < 0)
+            {
+                weaponTransform.localPosition = new Vector3(1.7f, pos.y, pos.z);
+            }
+        }
+
+        private void OnChangeLife(float currentLife)
+        {
+            uiHealth.ChangeLife(currentLife);
+            
+            if (currentLife <= 0)
+            {
+                IsDead = true;
+                SwitchState(new DiePlayerState(this));
+            }
         }
 
         private void OnInputJump(bool isJump)
@@ -113,12 +153,19 @@ namespace Desire.Game.Player
         private void OnDrawGizmos()
         {
             CheckGroundGizmos();
+            RangeDamageGizmos();
         }
 
         private void CheckGroundGizmos()
         {
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(groundPosition.position, checkRadius);
+        }
+
+        private void RangeDamageGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(weaponTransform.position, WeaponConfig.radius);
         }
     }
 }

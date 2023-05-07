@@ -15,9 +15,9 @@ namespace Desire.Game.Player.StateMachine.States
 
         public override void UpdateState(float deltaTime)
         {
-            if (Player.IsAttack && Player.Attacks.Count > 0)
+            if (Player.IsAttack)
             {
-                Player.SwitchState(new AttackPlayerState(Player,0));
+                Player.SwitchState(new AttackPlayerState(Player));
                 return;
             }
             
