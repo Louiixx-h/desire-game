@@ -122,16 +122,14 @@ namespace Desire.Game.Player
         {
             MovementDirection = motion;
 
-            var pos = weaponTransform.localPosition;
-            if (motion.x > 0)
+            var localPosition = weaponTransform.localPosition;
+            localPosition = motion.x switch
             {
-                weaponTransform.localPosition = new Vector3(-1.7f, pos.y, pos.z);
-            }
-            
-            if (motion.x < 0)
-            {
-                weaponTransform.localPosition = new Vector3(1.7f, pos.y, pos.z);
-            }
+                > 0 => new Vector3(-1.7f, localPosition.y, localPosition.z),
+                < 0 => new Vector3(1.7f, localPosition.y, localPosition.z),
+                _ => localPosition
+            };
+            weaponTransform.localPosition = localPosition;
         }
 
         private void OnChangeLife(float currentLife)
