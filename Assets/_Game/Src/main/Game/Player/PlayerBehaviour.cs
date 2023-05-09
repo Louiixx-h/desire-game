@@ -87,7 +87,8 @@ namespace Desire.Game.Player
             _inputs.OnFire += OnInputAttack;
             _inputs.OnMotion += OnInputMotion;
             _inputs.OnJump += OnInputJump;
-            _health.OnChangeLife += OnChangeLife;
+            _health.OnTakeLife += OnTakeLife;
+            _health.OnTakeDamage += OnTakeDamage;
         }
 
         private void OnDisable()
@@ -95,7 +96,8 @@ namespace Desire.Game.Player
             _inputs.OnFire -= OnInputAttack;
             _inputs.OnMotion -= OnInputMotion;
             _inputs.OnJump -= OnInputJump;
-            _health.OnChangeLife += OnChangeLife;
+            _health.OnTakeLife += OnTakeLife;
+            _health.OnTakeDamage += OnTakeDamage;
         }
 
         private void Update()
@@ -132,15 +134,23 @@ namespace Desire.Game.Player
             weaponTransform.localPosition = localPosition;
         }
 
-        private void OnChangeLife(float currentLife)
+        private void OnTakeLife(float currentLife)
         {
             uiHealth.ChangeLife(currentLife);
-            
-            if (currentLife <= 0)
+        }
+        
+        private void OnTakeDamage(float currentLife)
+        {
+            uiHealth.ChangeLife(currentLife);
+
+            if (!(currentLife <= 0))
             {
-                IsDead = true;
-                SwitchState(new DiePlayerState(this));
+                SwitchState(new TakeHitPlayerState(this));
+                return;
             }
+            
+            IsDead = true;
+            SwitchState(new DiePlayerState(this));
         }
 
         private void OnInputJump(bool isJump)
