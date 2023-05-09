@@ -5,7 +5,8 @@ namespace Desire.Game.Behaviours
 {
     public class Health: MonoBehaviour, IDamageable, IHealth
     {
-        public Action<float> OnChangeLife { get; set; }
+        public Action<float> OnTakeLife { get; set; }
+        public Action<float> OnTakeDamage { get; set; }
         
         private float _currentLife = 1;
         private const float MaxLife = 100;
@@ -20,7 +21,7 @@ namespace Desire.Game.Behaviours
             }
             
             _currentLife = Mathf.Clamp(_currentLife - value, NoLife, MaxLife);
-            OnChangeLife?.Invoke(_currentLife / MaxLife);
+            OnTakeDamage?.Invoke(_currentLife / MaxLife);
         }
 
         public void TakeLife(float value)
@@ -31,7 +32,7 @@ namespace Desire.Game.Behaviours
             }
             
             _currentLife = Mathf.Clamp(_currentLife + value, NoLife, MaxLife);
-            OnChangeLife?.Invoke(_currentLife / MaxLife);
+            OnTakeLife?.Invoke(_currentLife / MaxLife);
         }
         
         public void TakeMaxLife()
