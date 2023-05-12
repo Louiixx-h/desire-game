@@ -14,90 +14,80 @@ namespace Desire.Game.Player
     [RequireComponent(typeof(Animator))]
     public class PlayerBehaviour : MonoBehaviour
     {
-        [Header("Movement")]
+        [SerializeField] private CapsuleCollider2D capsuleCollider;
         
-        [SerializeField]
-        private float movementSpeed = 5;
-        [SerializeField]
-        private float jumpForce = 5;
+        [Header("Movement")]
+        [SerializeField] private float movementSpeed = 5;
+        [SerializeField] private float jumpForce = 5;
         
         [Header("Check Ground")]
-        
-        [SerializeField]
-        private float checkRadius = 0.2f;
-        [SerializeField]
-        private Transform groundPosition;
-        [SerializeField]
-        private LayerMask groundLayer;
+        [SerializeField] private float checkRadius = 0.2f;
+        [SerializeField] private Transform groundPosition;
+        [SerializeField] private LayerMask groundLayer;
         
         [Header("Skin")]
-        
-        [SerializeField]
-        private SpriteRenderer sprite;
+        [SerializeField] private SpriteRenderer sprite;
         
         [Header("Combat")]
-
-        [SerializeField]                   
-        private Transform weaponTransform; 
-        [field:SerializeField]
-        public WeaponConfig WeaponConfig { get; private set; }
-
-        [HideInInspector]
-        [Inject(InjectFrom.Anywhere)] 
-        public UiHealthPlayer uiHealth;
+        [SerializeField] private Transform weaponTransform; 
+        [field:SerializeField] public WeaponConfig WeaponConfig { get; private set; }
+        
+        [HideInInspector] [Inject(InjectFrom.Anywhere)] public UiHealthPlayer uiHealth;
         
         private IHealth _health;
+        private Animator _animator;
         private Rigidbody2D _rigidbody;
         private InputPlayerActions _inputs;
-        private Animator _animator;
         private IStateMachineContext _stateMachineContext;
 
-        public Vector2 MovementDirection { get; private set; }
         public bool IsAttack { get; private set; }
         public bool IsDead { get; private set; }
         public bool IsJump { get; private set; }
         public Melee Melee { get; private set; }
         public Movement Movement { get; private set; }
         public CheckGround CheckGround { get; private set; }
+        public Vector2 MovementDirection { get; private set; }
         public PlayerAnimationHandler PlayerAnimationHandler { get; private set; }
 
         private void Awake()
         {
             _health = GetComponent<Health>();
             _animator = GetComponent<Animator>();
-            _inputs = GetComponent<InputPlayerActions>();
             _rigidbody = GetComponent<Rigidbody2D>();
+            _inputs = GetComponent<InputPlayerActions>();
             _stateMachineContext = new StateMachineContext();
             
             MovementDirection = Vector2.zero;
             Melee = new Melee(WeaponConfig, weaponTransform);
+            PlayerAnimationHandler = new PlayerAnimationHandler(_animator);
             Movement = new Movement(sprite, movementSpeed, _rigidbody, jumpForce);
             CheckGround = new CheckGround(groundPosition, checkRadius, groundLayer);
-            PlayerAnimationHandler = new PlayerAnimationHandler(_animator);
         }
 
         private void Start()
         {
-            SwitchState(new IdlePlayerState(this));
             _health.TakeMaxLife();
+            SwitchState(new IdlePlayerState(this));
         }
 
         private void OnEnable()
         {
-            _inputs.OnFire += OnInputAttack;
-            _inputs.OnMotion += OnInputMotion;
             _inputs.OnJump += OnInputJump;
+            _inputs.OnFire += OnInputAttack;
             _health.OnTakeLife += OnTakeLife;
+            _inputs.OnMotion += OnInputMotion;
             _health.OnTakeDamage += OnTakeDamage;
+            _inputs.OnAction += OnInputAction;
         }
 
         private void OnDisable()
         {
-            _inputs.OnFire -= OnInputAttack;
-            _inputs.OnMotion -= OnInputMotion;
             _inputs.OnJump -= OnInputJump;
-            _health.OnTakeLife += OnTakeLife;
-            _health.OnTakeDamage += OnTakeDamage;
+            _inputs.OnFire -= OnInputAttack;
+            _health.OnTakeLife -= OnTakeLife;
+            _inputs.OnMotion -= OnInputMotion;
+            _health.OnTakeDamage -= OnTakeDamage;
+            _inputs.OnAction -= OnInputAction;
         }
 
         private void Update()
