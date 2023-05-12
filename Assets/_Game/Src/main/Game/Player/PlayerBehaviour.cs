@@ -41,6 +41,7 @@ namespace Desire.Game.Player
         private IStateMachineContext _stateMachineContext;
 
         public bool IsAttack { get; private set; }
+        public bool IsAction { get; private set; }
         public bool IsDead { get; private set; }
         public bool IsJump { get; private set; }
         public Melee Melee { get; private set; }
@@ -103,6 +104,11 @@ namespace Desire.Game.Player
         public void SwitchState(BaseStatePlayer newState)
         {
             _stateMachineContext.SwitchState(newState);
+        }
+
+        private void OnInputAction(bool isAction)
+        {
+            IsAction = isAction;
         }
 
         private void OnInputAttack(bool isAttack)
