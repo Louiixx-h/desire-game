@@ -53,15 +53,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Action"",
-                    ""type"": ""Button"",
-                    ""id"": ""ffb9da2f-3448-4995-b262-939a1bd12a46"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -174,10 +165,27 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
+                }
+            ]
+        },
+        {
+            ""name"": ""Interactable"",
+            ""id"": ""0e92d99a-2476-4a67-a505-9e90183459ae"",
+            ""actions"": [
+                {
+                    ""name"": ""Action"",
+                    ""type"": ""Button"",
+                    ""id"": ""f06df1bb-dace-4d77-a5a9-8b3aeae5b713"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""2e7ba536-a5ff-478d-b17f-656b1971964f"",
+                    ""id"": ""3ee9dd08-5297-42ac-95d1-c06870e30b7f"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -188,7 +196,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""051b1641-2dbb-4133-9471-46f3ab5e4307"",
+                    ""id"": ""3bfcbd0c-82f1-44ce-99a2-bd16ac254ecc"",
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -235,7 +243,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Motion = m_Player.FindAction("Motion", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_Action = m_Player.FindAction("Action", throwIfNotFound: true);
+        // Interactable
+        m_Interactable = asset.FindActionMap("Interactable", throwIfNotFound: true);
+        m_Interactable_Action = m_Interactable.FindAction("Action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -300,7 +310,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Motion;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_Action;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -308,7 +317,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Motion => m_Wrapper.m_Player_Motion;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @Action => m_Wrapper.m_Player_Action;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -327,9 +335,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @Action.started += instance.OnAction;
-            @Action.performed += instance.OnAction;
-            @Action.canceled += instance.OnAction;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -343,9 +348,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @Action.started -= instance.OnAction;
-            @Action.performed -= instance.OnAction;
-            @Action.canceled -= instance.OnAction;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -363,6 +365,52 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Interactable
+    private readonly InputActionMap m_Interactable;
+    private List<IInteractableActions> m_InteractableActionsCallbackInterfaces = new List<IInteractableActions>();
+    private readonly InputAction m_Interactable_Action;
+    public struct InteractableActions
+    {
+        private @Controls m_Wrapper;
+        public InteractableActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Action => m_Wrapper.m_Interactable_Action;
+        public InputActionMap Get() { return m_Wrapper.m_Interactable; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InteractableActions set) { return set.Get(); }
+        public void AddCallbacks(IInteractableActions instance)
+        {
+            if (instance == null || m_Wrapper.m_InteractableActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_InteractableActionsCallbackInterfaces.Add(instance);
+            @Action.started += instance.OnAction;
+            @Action.performed += instance.OnAction;
+            @Action.canceled += instance.OnAction;
+        }
+
+        private void UnregisterCallbacks(IInteractableActions instance)
+        {
+            @Action.started -= instance.OnAction;
+            @Action.performed -= instance.OnAction;
+            @Action.canceled -= instance.OnAction;
+        }
+
+        public void RemoveCallbacks(IInteractableActions instance)
+        {
+            if (m_Wrapper.m_InteractableActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IInteractableActions instance)
+        {
+            foreach (var item in m_Wrapper.m_InteractableActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_InteractableActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public InteractableActions @Interactable => new InteractableActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -386,6 +434,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnMotion(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+    }
+    public interface IInteractableActions
+    {
         void OnAction(InputAction.CallbackContext context);
     }
 }
