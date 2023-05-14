@@ -9,7 +9,6 @@ namespace Desire.Game.Inputs
         public Action<Vector2> OnMotion;
         public Action<bool> OnFire;
         public Action<bool> OnJump;
-        public Action<bool> OnAction;
 
         private Controls _controls;
     
@@ -55,11 +54,6 @@ namespace Desire.Game.Inputs
         }
 
         void Controls.IPlayerActions.OnJump(InputAction.CallbackContext context)
-        {
-            OnJump?.Invoke(context.ReadValueAsButton());
-        }
-
-        void Controls.IPlayerActions.OnAction(InputAction.CallbackContext context)
         {
             OnJump?.Invoke(context.ReadValueAsButton());
         }
