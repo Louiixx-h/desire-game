@@ -31,15 +31,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Action",
-                    "type": "Button",
-                    "id": "ffb9da2f-3448-4995-b262-939a1bd12a46",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -152,10 +143,27 @@
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
+                }
+            ]
+        },
+        {
+            "name": "Interactable",
+            "id": "0e92d99a-2476-4a67-a505-9e90183459ae",
+            "actions": [
+                {
+                    "name": "Action",
+                    "type": "Button",
+                    "id": "f06df1bb-dace-4d77-a5a9-8b3aeae5b713",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
                 {
                     "name": "",
-                    "id": "2e7ba536-a5ff-478d-b17f-656b1971964f",
+                    "id": "3ee9dd08-5297-42ac-95d1-c06870e30b7f",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
@@ -166,7 +174,7 @@
                 },
                 {
                     "name": "",
-                    "id": "051b1641-2dbb-4133-9471-46f3ab5e4307",
+                    "id": "3bfcbd0c-82f1-44ce-99a2-bd16ac254ecc",
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
