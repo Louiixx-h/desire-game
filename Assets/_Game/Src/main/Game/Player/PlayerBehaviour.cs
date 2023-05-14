@@ -39,7 +39,6 @@ namespace Desire.Game.Player
         private IStateMachineContext _stateMachineContext;
 
         public bool IsAttack { get; private set; }
-        public bool IsAction { get; private set; }
         public bool IsDead { get; private set; }
         public bool IsJump { get; private set; }
         public Melee Melee { get; private set; }
@@ -76,7 +75,6 @@ namespace Desire.Game.Player
             _health.OnTakeLife += OnTakeLife;
             _inputs.OnMotion += OnInputMotion;
             _health.OnTakeDamage += OnTakeDamage;
-            _inputs.OnAction += OnInputAction;
         }
 
         private void OnDisable()
@@ -86,7 +84,6 @@ namespace Desire.Game.Player
             _health.OnTakeLife -= OnTakeLife;
             _inputs.OnMotion -= OnInputMotion;
             _health.OnTakeDamage -= OnTakeDamage;
-            _inputs.OnAction -= OnInputAction;
         }
 
         private void Update()
