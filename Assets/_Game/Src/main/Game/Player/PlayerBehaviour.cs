@@ -101,11 +101,11 @@ namespace Desire.Game.Player
             _stateMachineContext.SwitchState(newState);
         }
 
-        private void OnInputAction(bool isAction)
+        public void TakeLife(float value)
         {
-            IsAction = isAction;
+            _health.TakeLife(value);
         }
-
+        
         private void OnInputAttack(bool isAttack)
         {
             IsAttack = isAttack;
