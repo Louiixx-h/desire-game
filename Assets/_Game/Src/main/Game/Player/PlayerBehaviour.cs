@@ -14,8 +14,6 @@ namespace Desire.Game.Player
     [RequireComponent(typeof(Animator))]
     public class PlayerBehaviour : MonoBehaviour
     {
-        [SerializeField] private CapsuleCollider2D capsuleCollider;
-        
         [Header("Movement")]
         [SerializeField] private float movementSpeed = 5;
         [SerializeField] private float jumpForce = 5;
