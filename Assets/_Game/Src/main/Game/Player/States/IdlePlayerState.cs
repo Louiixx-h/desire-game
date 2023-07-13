@@ -1,14 +1,14 @@
 using UnityEngine;
 
-namespace Desire.Game.Player.StateMachine.States
+namespace Desire.Game.Player.States
 {
-    public class WalkPlayerState : BaseStatePlayer
+    public class IdlePlayerState : BaseStatePlayer
     {
-        public WalkPlayerState(PlayerBehaviour playerBehaviour): base(playerBehaviour, "Walk"){}
+        public IdlePlayerState(PlayerBehaviour player) : base(player, "Idle"){}
 
         public override void StartState()
         {
-            Player.PlayerAnimationHandler.Play("Run");
+            Player.AnimationHandler.Play(Name);
         }
 
         public override void EndState() {}
@@ -21,9 +21,9 @@ namespace Desire.Game.Player.StateMachine.States
                 return;
             }
             
-            if (Player.MovementDirection == Vector2.zero)
+            if (Player.MovementDirection != Vector2.zero)
             {
-                Player.SwitchState(new IdlePlayerState(Player));
+                Player.SwitchState(new WalkPlayerState(Player));
                 return;
             }
             
@@ -35,7 +35,7 @@ namespace Desire.Game.Player.StateMachine.States
 
         public override void FixedUpdateState(float deltaTime)
         {
-            Move(deltaTime, Player.MovementDirection);
+            Move(deltaTime);
         }
     }
 }

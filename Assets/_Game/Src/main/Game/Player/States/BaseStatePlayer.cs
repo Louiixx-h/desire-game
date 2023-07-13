@@ -1,6 +1,7 @@
+using Desire.Game.Player.StateMachine.States;
 using UnityEngine;
 
-namespace Desire.Game.Player.StateMachine.States
+namespace Desire.Game.Player.States
 {
     public abstract class BaseStatePlayer : IState
     {
@@ -26,11 +27,6 @@ namespace Desire.Game.Player.StateMachine.States
         protected void Move(float deltaTime, Vector2 motion)
         {            
             Player.Movement.Tick(deltaTime, motion);
-        }
-
-        protected void Jump()
-        {
-            Player.Movement.Jump();
         }
     }
 }

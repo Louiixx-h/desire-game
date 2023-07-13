@@ -8,13 +8,21 @@ namespace Desire.Game.Behaviours
         private readonly SpriteRenderer _sprite;
         private readonly float _movementSpeed;
         private readonly float _jumpForce;
+        private readonly bool _right;
         
-        public Movement(SpriteRenderer sprite, float movementSpeed, Rigidbody2D rigidbody, float jumpForce)
+        public Movement(
+            SpriteRenderer sprite, 
+            float movementSpeed, 
+            Rigidbody2D rigidbody, 
+            float jumpForce,
+            bool right = true
+        )
         {
             _rigidbody = rigidbody;
             _movementSpeed = movementSpeed;
             _sprite = sprite;
             _jumpForce = jumpForce;
+            _right = right;
         }
         
         public void Tick(float deltaTime, Vector2 motion)
@@ -23,8 +31,8 @@ namespace Desire.Game.Behaviours
 
             _sprite.flipX = motion.x switch
             {
-                > 0 => true,
-                < 0 => false,
+                > 0 => _right,
+                < 0 => !_right,
                 _ => _sprite.flipX
             };
         }

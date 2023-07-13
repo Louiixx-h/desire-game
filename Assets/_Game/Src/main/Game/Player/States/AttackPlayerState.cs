@@ -1,21 +1,21 @@
 using UnityEngine;
 
-namespace Desire.Game.Player.StateMachine.States
+namespace Desire.Game.Player.States
 {
     public class AttackPlayerState : BaseStatePlayer
     {
-        public AttackPlayerState(PlayerBehaviour playerBehaviour): base(playerBehaviour, "Attack") {}
+        public AttackPlayerState(PlayerBehaviour player): base(player, "Attack") {}
 
         public override void StartState()
         {
-            Player.PlayerAnimationHandler.Play(Player.WeaponConfig.nameAnimation);
+            Player.AnimationHandler.Play(Player.WeaponConfig.nameAnimation);
         }
 
         public override void EndState() {}
 
         public override void UpdateState(float deltaTime)
         {
-            if (Player.PlayerAnimationHandler.IsFinished(0, Player.WeaponConfig.tagAnimation))
+            if (Player.AnimationHandler.IsFinished(0, Player.WeaponConfig.tagAnimation))
             {
                 Player.SwitchState(new IdlePlayerState(Player));
                 return;

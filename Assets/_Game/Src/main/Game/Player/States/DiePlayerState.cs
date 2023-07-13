@@ -1,12 +1,12 @@
-namespace Desire.Game.Player.StateMachine.States
+namespace Desire.Game.Player.States
 {
     public class DiePlayerState : BaseStatePlayer
     {
-        public DiePlayerState(PlayerBehaviour playerBehaviour) : base(playerBehaviour, "Death"){}
+        public DiePlayerState(PlayerBehaviour player) : base(player, "Death"){}
 
         public override void StartState()
         {
-            Player.PlayerAnimationHandler.Play(Name);
+            Player.AnimationHandler.Play(Name);
         }
 
         public override void EndState() {}

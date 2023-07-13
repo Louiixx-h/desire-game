@@ -1,6 +1,4 @@
-using Desire.DI;
 using Desire.Game.Behaviours;
-using Desire.Game.Player;
 using UnityEngine;
 
 namespace Desire.Game.AI
@@ -10,35 +8,28 @@ namespace Desire.Game.AI
         [SerializeField] private LayerMask whatIsPlayer;
         [SerializeField] private Transform colliderPosition;
         [SerializeField] private BoxCollider2D boxCollider;
-        [SerializeField] private SpriteRenderer spriteRenderer;
-        [SerializeField] [Range(1, 20)] private float moveSpeed;
         [SerializeField] [Range(1, 60)] private float damage;
-        [SerializeField] [Range(1, 20)] private float damageColliderCooldown;
-    
-        private IHealth _health;
-        private Rigidbody2D _rigidbody;
+        [SerializeField] [Range(1, 20)] private float colliderCooldown;
+
+        private bool _canDoDamage;
         private float _cooldownDamage;
-
-        public Animator Animator { get; private set; }
-        [Inject(InjectFrom.Anywhere)] public PlayerBehaviour Player { get; private set; }
-
-        private void Awake()
-        {
-            Animator = GetComponent<Animator>();
-
-            _rigidbody = GetComponent<Rigidbody2D>();
-            _health = GetComponent<Health>();
-        }
 
         private void FixedUpdate()
         {
-            if (_cooldownDamage > 0)
+            if (_canDoDamage)
             {
-                _cooldownDamage -= Time.deltaTime;
-                return;
+                ActivateDamageCollider();   
+                _cooldownDamage = colliderCooldown;
             }
-            
-            ActivateDamageCollider();
+            else
+            {
+                _cooldownDamage -= Time.deltaTime;   
+            }
+
+            if (_cooldownDamage <= 0)
+            {
+                _canDoDamage = true;
+            }
         }
 
         private void ActivateDamageCollider()
@@ -57,7 +48,7 @@ namespace Desire.Game.AI
                 var isDamageable = coll.TryGetComponent(out IDamageable damageable);
                 if (!isDamageable) return;
                 damageable.TakeDamage(damage);
-                _cooldownDamage = damageColliderCooldown;
+                _canDoDamage = false;
             }
         }
 

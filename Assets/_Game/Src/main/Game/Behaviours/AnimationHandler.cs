@@ -1,12 +1,12 @@
 using UnityEngine;
 
-namespace Desire.Game.Player
+namespace Desire.Game.Behaviours
 {
-    public class PlayerAnimationHandler
+    public class AnimationHandler
     {
         private readonly Animator _animator;
         
-        public PlayerAnimationHandler(Animator animator)
+        public AnimationHandler(Animator animator)
         {
             _animator = animator;
         }

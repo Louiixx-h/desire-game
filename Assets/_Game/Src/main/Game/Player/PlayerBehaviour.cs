@@ -3,15 +3,12 @@ using Desire.Game.Behaviours;
 using Desire.Game.Behaviours.Combat;
 using Desire.Game.Inputs;
 using Desire.Game.Player.StateMachine;
-using Desire.Game.Player.StateMachine.States;
+using Desire.Game.Player.States;
 using Desire.Ui;
 using UnityEngine;
 
 namespace Desire.Game.Player
 {
-    [RequireComponent(typeof(Rigidbody2D))]
-    [RequireComponent(typeof(InputPlayerActions))]
-    [RequireComponent(typeof(Animator))]
     public class PlayerBehaviour : MonoBehaviour
     {
         [Header("Movement")]
@@ -45,7 +42,7 @@ namespace Desire.Game.Player
         public Movement Movement { get; private set; }
         public CheckGround CheckGround { get; private set; }
         public Vector2 MovementDirection { get; private set; }
-        public PlayerAnimationHandler PlayerAnimationHandler { get; private set; }
+        public AnimationHandler AnimationHandler { get; private set; }
 
         private void Awake()
         {
@@ -57,7 +54,7 @@ namespace Desire.Game.Player
             
             MovementDirection = Vector2.zero;
             Melee = new Melee(WeaponConfig, weaponTransform);
-            PlayerAnimationHandler = new PlayerAnimationHandler(_animator);
+            AnimationHandler = new AnimationHandler(_animator);
             Movement = new Movement(sprite, movementSpeed, _rigidbody, jumpForce);
             CheckGround = new CheckGround(groundPosition, checkRadius, groundLayer);
         }

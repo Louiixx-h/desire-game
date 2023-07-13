@@ -1,12 +1,12 @@
-namespace Desire.Game.Player.StateMachine.States
+namespace Desire.Game.Player.States
 {
     public class JumpPlayerState : BaseStatePlayer
     {
-        public JumpPlayerState(PlayerBehaviour playerBehaviour) : base(playerBehaviour, "Jump"){}
+        public JumpPlayerState(PlayerBehaviour player) : base(player, "Jump"){}
 
         public override void StartState()
         {
-            Player.PlayerAnimationHandler.Play(Name);
+            Player.AnimationHandler.Play(Name);
         }
 
         public override void EndState() {}
