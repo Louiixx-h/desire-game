@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Game/Scenes/Main Scene.unity
+    path: Assets/Desire/Scenes/Village.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Desire/Scenes/Prototype.unity
+    guid: a070aea8cc15c9a418ceb51f956f5140
   m_configObjects: {}
