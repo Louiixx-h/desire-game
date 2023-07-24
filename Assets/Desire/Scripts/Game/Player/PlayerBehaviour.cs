@@ -18,7 +18,7 @@ namespace Desire.Scripts.Game.Player
         [SerializeField] private float dashForce;
         [SerializeField] private float dashCooldown;
         [SerializeField] private float dashTime;
-        
+
         [Header("Check Ground")]
         [SerializeField] private float checkRadius = 0.2f;
         [SerializeField] private Transform groundPosition;
@@ -28,16 +28,16 @@ namespace Desire.Scripts.Game.Player
         [SerializeField] private SpriteRenderer sprite;
         
         [Header("Combat")]
-        [SerializeField] private Transform weaponTransform; 
-        [field:SerializeField] public WeaponConfig WeaponConfig { get; private set; }
+        [SerializeField] private Transform weaponTransform;
+        [SerializeField] private WeaponConfig weaponConfig;
         
         [HideInInspector] [Inject(InjectFrom.Anywhere)] public UiHealthPlayer uiHealth;
         
         private IHealth _health;
         private Animator _animator;
-        private Rigidbody2D _rigidbody;
         private InputPlayerActions _inputs;
         private IStateMachineContext _stateMachineContext;
+        private float _currentDashTime;
 
         public bool CanDoDamage { get; set; }
         public bool IsAttack { get; private set; }
@@ -49,27 +49,24 @@ namespace Desire.Scripts.Game.Player
         public CheckGround CheckGround { get; private set; }
         public Vector2 MovementDirection { get; private set; }
         public AnimationHandler AnimationHandler { get; private set; }
-        public Rigidbody2D Rigidbody => _rigidbody;
+        public Rigidbody2D Rigidbody { get; private set; }
+        public WeaponConfig WeaponConfig => weaponConfig;
         public float DashForce => dashForce;
-        public float DashTime => dashTime;
-        public float DashCooldown
-        {
-            get => dashCooldown;
-            set => dashCooldown = value;
-        }
+        public float DashCooldown => dashCooldown;
+        public bool CanDash { get; set; }
 
         private void Awake()
         {
             _health = GetComponent<Health>();
             _animator = GetComponent<Animator>();
-            _rigidbody = GetComponent<Rigidbody2D>();
             _inputs = GetComponent<InputPlayerActions>();
             _stateMachineContext = new StateMachineContext();
-            
+            _currentDashTime = dashTime;
+            Rigidbody = GetComponent<Rigidbody2D>();
             MovementDirection = Vector2.zero;
             Melee = new Melee(WeaponConfig, weaponTransform, WeaponConfig.timeToAttack);
             AnimationHandler = new AnimationHandler(_animator);
-            Movement = new Movement(sprite, movementSpeed, _rigidbody, jumpForce);
+            Movement = new Movement(sprite, movementSpeed, Rigidbody, jumpForce);
             CheckGround = new CheckGround(groundPosition, checkRadius, groundLayer);
         }
 
@@ -102,6 +99,17 @@ namespace Desire.Scripts.Game.Player
         private void Update()
         {
             var deltaTime = Time.deltaTime;
+            
+            if (!CanDash)
+            {
+                _currentDashTime -= deltaTime;
+                if (_currentDashTime <= 0)
+                {
+                    _currentDashTime = dashTime;
+                    CanDash = true;
+                }
+            }
+            
             _stateMachineContext?.CurrentState.UpdateState(deltaTime);
             Melee.Update(deltaTime);
         }

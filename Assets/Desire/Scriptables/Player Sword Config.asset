@@ -19,5 +19,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   baseDamage: 30
-  force: 1.3
+  force: 0.4
   timeToAttack: 1

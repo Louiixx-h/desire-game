@@ -1,29 +1,26 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Desire.Scripts.Game.Player.States
 {
     public class DashPlayerState : BaseStatePlayer
     {
+        private bool _isDashFinished;
         private float _gravityScale;
         
-        public DashPlayerState(PlayerBehaviour player) : base(player, "Run"){}
+        public DashPlayerState(PlayerBehaviour player) : base(player, "Dash"){}
 
         public override void StartState()
         {
+            _gravityScale = Player.Rigidbody.gravityScale;
             Player.AnimationHandler.Play(Name);
         }
 
-        public override void EndState()
-        {
-            Player.DashCooldown = Player.DashTime;
-            Player.Rigidbody.gravityScale = _gravityScale;
-        }
+        public override void EndState() {}
 
         public override void UpdateState(float deltaTime)
         {
-            Player.DashCooldown -= deltaTime;
-            
-            if (Player.DashCooldown <= 0)
+            if (_isDashFinished)
             {
                 Player.SwitchState(new IdlePlayerState(Player));
             }
@@ -31,10 +28,16 @@ namespace Desire.Scripts.Game.Player.States
 
         public override void FixedUpdateState(float deltaTime)
         {
-            var rigidbody = Player.Rigidbody;
-            _gravityScale = rigidbody.gravityScale;
-            rigidbody.gravityScale = 0;
-            rigidbody.velocity = new Vector2(Player.MovementDirection.normalized.x * Player.DashForce, 0);
+            Player.StartCoroutine(DashCoroutines());
+        }
+
+        private IEnumerator DashCoroutines()
+        {
+            Player.Rigidbody.velocity = new Vector2(Player.MovementDirection.normalized.x * Player.DashForce, 0);
+            yield return new WaitForSeconds(Player.DashCooldown);
+            Player.Rigidbody.gravityScale = _gravityScale;
+            Player.CanDash = false;
+            _isDashFinished = true;
         }
     }
 }

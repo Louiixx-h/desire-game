@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f48bb92cc77408bb258b6ef90bbca1f, type: 3}
   m_Name: Enemy Sword Config
   m_EditorClassIdentifier: 
-  nameAnimation: Attack
+  nameAnimation: Sword Attack
   tagAnimation: Attack
   radius: 1.4
   layer:

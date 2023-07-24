@@ -4,7 +4,7 @@ namespace Desire.Scripts.Game.Enemy.States
 {
     public class PatrolEnemyState : BaseStateEnemy
     {
-        public PatrolEnemyState(EnemyBehaviour enemy): base(enemy, "Patrol"){}
+        public PatrolEnemyState(EnemyBehaviour enemy): base(enemy, "Run"){}
 
         public override void StartState()
         {
@@ -35,12 +35,6 @@ namespace Desire.Scripts.Game.Enemy.States
             if (Enemy.IsInRangeOfAttack() && Enemy.Melee.IsReadyToAttack)
             {
                 Enemy.SwitchState(new AttackEnemyState(Enemy));
-                return;
-            }
-            
-            if (Enemy.IsInRangeOfAttack())
-            {
-                Enemy.SwitchState(new IdleEnemyState(Enemy));
                 return;
             }
             
@@ -82,14 +76,14 @@ namespace Desire.Scripts.Game.Enemy.States
         {
             var position = Enemy.transform.position;
             var pointA = Enemy.PatrolArea.GetStartPoint();
-            return Vector3.Distance(position, pointA) <= 0.2f;
+            return Vector3.Distance(position, pointA) <= 0.5f;
         }
         
         private bool IsOnPointB()
         {
             var position = Enemy.transform.position;
             var pointB = Enemy.PatrolArea.GetEndPoint();
-            return Vector3.Distance(position, pointB) <= 0.2f;
+            return Vector3.Distance(position, pointB) <= 0.5f;
         }
     }
 }

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Desire.Scripts.Game.Enemy.States
 {
     public class IdleEnemyState : BaseStateEnemy

@@ -31,11 +31,9 @@ namespace Desire.Scripts.Game.Enemy
 
         private IHealth _health;
         private Animator _animator;
-        private Rigidbody2D _rigidbody;
         private IStateMachineContext _stateMachineContext;
 
         public bool CanDoDamage { get; set; }
-        public bool IsDead { get; private set; }
         public Melee Melee { get; private set; }
         public Movement Movement { get; private set; }
         public Vector2 MovementDirection { get; set; }
@@ -52,14 +50,13 @@ namespace Desire.Scripts.Game.Enemy
             _health = GetComponent<Health>();
             _animator = GetComponent<Animator>();
             rigidbody = GetComponent<Rigidbody2D>();
-            _rigidbody = GetComponent<Rigidbody2D>();
             collider = GetComponent<CapsuleCollider2D>();
             _stateMachineContext = new StateMachineContext();
             
             MovementDirection = Vector2.zero;
             AnimationHandler = new AnimationHandler(_animator);
             Melee = new Melee(WeaponConfig, weaponTransform, WeaponConfig.timeToAttack);
-            Movement = new Movement(sprite, movementSpeed, _rigidbody, 0, false);
+            Movement = new Movement(sprite, movementSpeed, rigidbody, 0, false);
         }
 
         private void Start()
@@ -104,8 +101,7 @@ namespace Desire.Scripts.Game.Enemy
                 SwitchState(new TakeHitEnemyState(this, force));
                 return;
             }
-            
-            IsDead = true;
+
             SwitchState(new DieEnemyState(this));
             onDie?.Invoke();
         }

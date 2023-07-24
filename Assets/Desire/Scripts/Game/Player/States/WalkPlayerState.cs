@@ -15,7 +15,7 @@ namespace Desire.Scripts.Game.Player.States
 
         public override void UpdateState(float deltaTime)
         {
-            if (Player.IsDash)
+            if (Player.IsDash && Player.CanDash)
             {
                 Player.SwitchState(new DashPlayerState(Player));
                 return;

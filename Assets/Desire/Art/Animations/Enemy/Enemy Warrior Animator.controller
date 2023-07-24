@@ -110,7 +110,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player Controller
+  m_Name: Enemy Warrior Animator
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -260,7 +260,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Death
+  m_Name: Die
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
