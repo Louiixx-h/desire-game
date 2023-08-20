@@ -11,6 +11,8 @@ Você terá a oportunidade de fazer escolhas importantes ao longo do jogo, o que
 
 Desire é um jogo emocionante que irá testar suas habilidades e decisões. Você está pronto para assumir o desafio e alcançar seu desejo final? Baixe agora e comece a jogar!
 
+<img src="./github/images/Untitled.png"/>
+
 ### 🏃‍♀️Basic move
 
 - [x] Walk
