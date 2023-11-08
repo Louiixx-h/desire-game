@@ -12,8 +12,9 @@ namespace Desire.Scripts.Game.Behaviours
         [SerializeField] private TextMeshProUGUI text;
         [SerializeField] private string message;
         [SerializeField] private string target;
-        
         [field:SerializeField] public ICommand Command { get; set; }
+
+        private bool _canInput;
         
         private void Start()
         {
@@ -32,6 +33,7 @@ namespace Desire.Scripts.Game.Behaviours
 
         private void OnInputAction(bool value)
         {
+            if (!_canInput) return;
             Command.Execute();
         }
 
@@ -43,6 +45,9 @@ namespace Desire.Scripts.Game.Behaviours
         
         public void HideInteraction()
         {
+            if (canvas == null) return;
+            if (text == null) return;
+            
             canvas.SetActive(false);
             text.text = "";
         }
@@ -50,14 +55,14 @@ namespace Desire.Scripts.Game.Behaviours
         private void OnTriggerEnter2D(Collider2D col)
         {
             if(!col.gameObject.CompareTag(target)) return;
-
+            _canInput = true;
             ShowInteraction();
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
             if(!other.gameObject.CompareTag(target)) return;
-            
+            _canInput = false;
             HideInteraction();
         }
     }

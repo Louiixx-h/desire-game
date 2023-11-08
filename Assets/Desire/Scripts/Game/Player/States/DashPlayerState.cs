@@ -12,11 +12,15 @@ namespace Desire.Scripts.Game.Player.States
 
         public override void StartState()
         {
+            Player.Collider.isTrigger = true;
             _gravityScale = Player.Rigidbody.gravityScale;
             Player.AnimationHandler.Play(Name);
         }
 
-        public override void EndState() {}
+        public override void EndState()
+        {
+            Player.Collider.isTrigger = false;
+        }
 
         public override void UpdateState(float deltaTime)
         {

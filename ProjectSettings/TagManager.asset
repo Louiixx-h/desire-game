@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Manipulable
+  - Configuration Screen
   layers:
   - Default
   - TransparentFX

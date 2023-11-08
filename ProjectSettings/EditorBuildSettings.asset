@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Desire/Scenes/Start Menu.unity
+    guid: d1aa850cb8918a144b97df27d52610d0
+  - enabled: 1
+    path: Assets/Desire/Scenes/Pit Of Misery.unity
+    guid: 77d43618b1244be40add97d7ecc3432c
+  - enabled: 1
     path: Assets/Desire/Scenes/Village.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1

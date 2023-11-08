@@ -1,0 +1,10 @@
+* {
+    -unity-font: url('project://database/Assets/advanced-pixel-7/advanced_pixel-7.ttf?fileID=12800000&guid=00d7d6f8b6ba86b498a679f127aa3a83&type=3#advanced_pixel-7');
+    -unity-font-definition: url('project://database/Assets/advanced-pixel-7/advanced_pixel-7%20SDF.asset?fileID=11400000&guid=1a51e18314fb4034dae3db3cdea5df3c&type=2#advanced_pixel-7 SDF');
+    -unity-font-style: bold;
+    
+    --primary-color: rgb(147, 113, 38);
+    --dark-color: rgb(34, 34, 34);
+    --primary-text-color: rgb(187, 173, 144);
+    --primary-text-color-light: rgb(203, 197, 184);
+}

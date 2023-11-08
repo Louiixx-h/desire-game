@@ -14,8 +14,6 @@ namespace Desire.Scripts.Game.Enemy
         
         [Header("Movement")]
         [SerializeField] private float movementSpeed = 2;
-        [SerializeField] private new Rigidbody2D rigidbody;
-        [SerializeField] private new Collider2D collider;
 
         [Header("Patrol")]
         [SerializeField] private PatrolArea patrolArea;
@@ -40,8 +38,8 @@ namespace Desire.Scripts.Game.Enemy
         public AnimationHandler AnimationHandler { get; private set; }
         public WeaponConfig WeaponConfig => weaponConfig;
         public PatrolArea PatrolArea => patrolArea;
-        public Rigidbody2D Rigidbody => rigidbody;
-        public Collider2D Collider => collider;
+        public Rigidbody2D Rigidbody { get; private set; }
+        public Collider2D Collider { get; private set; }
         public bool IsPlayerNull { get; private set; }
         public BasePlayer Player { get; private set; }
 
@@ -49,14 +47,14 @@ namespace Desire.Scripts.Game.Enemy
         {
             _health = GetComponent<Health>();
             _animator = GetComponent<Animator>();
-            rigidbody = GetComponent<Rigidbody2D>();
-            collider = GetComponent<CapsuleCollider2D>();
+            Rigidbody = GetComponent<Rigidbody2D>();
+            Collider = GetComponent<CapsuleCollider2D>();
             _stateMachineContext = new StateMachineContext();
             
             MovementDirection = Vector2.zero;
             AnimationHandler = new AnimationHandler(_animator);
             Melee = new Melee(WeaponConfig, weaponTransform, WeaponConfig.timeToAttack);
-            Movement = new Movement(sprite, movementSpeed, rigidbody, 0, false);
+            Movement = new Movement(sprite, movementSpeed, Rigidbody, 0, false);
         }
 
         private void Start()

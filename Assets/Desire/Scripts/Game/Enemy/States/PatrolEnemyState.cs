@@ -48,42 +48,47 @@ namespace Desire.Scripts.Game.Enemy.States
             {
                 Enemy.SwitchState(new IdleEnemyState(Enemy));
             }
+            
+            CalculateDirection();
         }
 
         public override void FixedUpdateState(float deltaTime)
+        {
+            Move(deltaTime, Enemy.MovementDirection);
+        }
+        
+        private void CalculateDirection()
         {
             Vector3 direction;
             var position = Enemy.transform.position;
             var pointA = Enemy.PatrolArea.GetStartPoint();
             var pointB = Enemy.PatrolArea.GetEndPoint();
-            
+
             if (IsOnPointA())
             {
                 direction = (pointB - position).normalized;
                 Enemy.MovementDirection = new Vector2(direction.x, 0);
             }
-            
+
             if (IsOnPointB())
             {
                 direction = (pointA - position).normalized;
                 Enemy.MovementDirection = new Vector2(direction.x, 0);
             }
-
-            Move(deltaTime, Enemy.MovementDirection);
         }
 
         private bool IsOnPointA()
         {
             var position = Enemy.transform.position;
             var pointA = Enemy.PatrolArea.GetStartPoint();
-            return Vector3.Distance(position, pointA) <= 0.5f;
+            return Vector3.Distance(position, pointA) <= 1f;
         }
         
         private bool IsOnPointB()
         {
             var position = Enemy.transform.position;
             var pointB = Enemy.PatrolArea.GetEndPoint();
-            return Vector3.Distance(position, pointB) <= 0.5f;
+            return Vector3.Distance(position, pointB) <= 1f;
         }
     }
 }

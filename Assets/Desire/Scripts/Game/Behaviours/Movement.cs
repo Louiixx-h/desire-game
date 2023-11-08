@@ -39,7 +39,7 @@ namespace Desire.Scripts.Game.Behaviours
 
         public void Jump()
         {
-            _rigidbody.AddForce(Vector2.up * _jumpForce);
+            _rigidbody.AddForce(Vector2.up * (_jumpForce * _jumpForce));
         }
     }
 }

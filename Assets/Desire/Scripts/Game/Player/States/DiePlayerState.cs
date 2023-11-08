@@ -2,7 +2,7 @@ namespace Desire.Scripts.Game.Player.States
 {
     public class DiePlayerState : BaseStatePlayer
     {
-        public DiePlayerState(PlayerBehaviour player) : base(player, "Death"){}
+        public DiePlayerState(PlayerBehaviour player) : base(player, "Die"){}
 
         public override void StartState()
         {

@@ -11,7 +11,7 @@ namespace Desire.Scripts.Game.Command
         public override void Execute()
         {
             var gameObject = GameObject.FindWithTag("Player");
-            if (gameObject.TryGetComponent(out IHealth health));
+            if (!gameObject.TryGetComponent(out IHealth health)) return;
             health.TakeLife(lifeAmount);
         }
     }

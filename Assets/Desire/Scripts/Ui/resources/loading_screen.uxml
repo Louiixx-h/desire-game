@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Desire/Scripts/Ui/resources/loading_screen.uss?fileID=7433441132597879392&amp;guid=f0402bffded30874c80cc5711a983c97&amp;type=3#loading_screen" />
+    <Style src="_root.uss"/>
+    <ui:VisualElement name="parent-container">
+        <ui:VisualElement name="top-container" />
+        <ui:VisualElement name="bottom-container">
+            <ui:Label name="loading-label" text="Carregando..." />
+            <ui:ProgressBar value="0" name="progress-bar" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

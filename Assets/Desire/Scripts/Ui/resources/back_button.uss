@@ -1,0 +1,13 @@
+.back-button {
+    width: 100%;
+    height: 100%;
+    border-width: 0;
+    background-image: url('project://database/Assets/Fantasy%20Wooden%20GUI%20%20Free/normal_ui_set%20A/Close%20Button.png?fileID=2800000&guid=11277a3f23988ec47908362d708edaa8&type=3#Close Button');
+    -unity-background-scale-mode: scale-to-fit;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    scale: 1.1;
+    color: var(--primary-text-color-light);
+}

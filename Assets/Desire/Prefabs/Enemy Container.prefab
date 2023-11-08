@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2099572381358859483}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.07, y: -1.2169418, z: -0.036231793}
+  m_LocalPosition: {x: 6.07, y: -0.59, z: -0.036231793}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 11
   m_Sprite: {fileID: 4723107735738678597, guid: f374107ba66790641b6b7c9d0d9a49d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -144,7 +144,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03755951, y: 0.43193913}
+  m_Offset: {x: -0.03755951, y: 0.06}
   m_Size: {x: 1.1628952, y: 2.702856}
   m_Direction: 0
 --- !u!50 &2099636957004036466
@@ -221,8 +221,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   movementSpeed: 4
-  rigidbody: {fileID: 2099636957004036466}
-  collider: {fileID: 8287098839083976318}
   patrolArea: {fileID: 4487437152622388924}
   rangeVisionDistance: 10
   sprite: {fileID: 7615966034696422110}

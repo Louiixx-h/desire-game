@@ -1,0 +1,42 @@
+#name-container {
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#top-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#left {
+    flex-grow: 1;
+    padding: 24px;
+}
+
+#right {
+    flex-grow: 1;
+    padding: 24px;
+}
+
+#life-bar {
+    width: 30%;
+    height: 36px;
+}
+
+.progressBar--background {
+    border-color: rgba(103, 10, 10, 255);
+    border-width: 5px;
+    background-color: rgba(103, 10, 10, 255);
+    overflow: hidden;
+}
+
+.progressBar--overlay {
+    width: 0;
+    height: 100%;
+    background-color: rgba(243, 19, 77, 255);
+}
