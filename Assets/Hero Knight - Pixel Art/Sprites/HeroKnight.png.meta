@@ -273,7 +273,7 @@ TextureImporter:
       213: 21300178
     second: HeroKnight_89
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -317,7 +317,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -333,6 +333,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 1
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -345,7 +346,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -357,7 +358,19 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1983,7 +1996,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 700
-        y: 55
+        y: 57
         width: 100
         height: 55
       alignment: 7
@@ -2262,96 +2275,96 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      HeroKnight_72: 21300144
-      HeroKnight_87: 21300174
-      HeroKnight_35: 21300070
-      HeroKnight_64: 21300128
-      HeroKnight_14: 21300028
-      HeroKnight_13: 21300026
-      HeroKnight_48: 21300096
-      HeroKnight_88: 21300176
-      HeroKnight_36: 21300072
-      HeroKnight_8: 21300016
-      HeroKnight_7: 21300014
-      HeroKnight_25: 21300050
-      HeroKnight_2: 21300004
-      HeroKnight_34: 21300068
-      HeroKnight_77: 21300154
-      HeroKnight_28: 21300056
-      HeroKnight_24: 21300048
-      HeroKnight_80: 21300160
-      HeroKnight_15: 21300030
-      HeroKnight_32: 21300064
-      HeroKnight_49: 21300098
-      HeroKnight_52: 21300104
-      HeroKnight_66: 21300132
       HeroKnight_0: 21300000
-      HeroKnight_63: 21300126
+      HeroKnight_1: 21300002
+      HeroKnight_10: 21300020
+      HeroKnight_11: 21300022
+      HeroKnight_12: 21300024
+      HeroKnight_13: 21300026
+      HeroKnight_14: 21300028
+      HeroKnight_15: 21300030
+      HeroKnight_16: 21300032
+      HeroKnight_17: 21300034
+      HeroKnight_18: 21300036
+      HeroKnight_19: 21300038
+      HeroKnight_2: 21300004
+      HeroKnight_20: 21300040
+      HeroKnight_21: 21300042
+      HeroKnight_22: 21300044
+      HeroKnight_23: 21300046
+      HeroKnight_24: 21300048
+      HeroKnight_25: 21300050
+      HeroKnight_26: 21300052
+      HeroKnight_27: 21300054
+      HeroKnight_28: 21300056
+      HeroKnight_29: 21300058
+      HeroKnight_3: 21300006
+      HeroKnight_30: 21300060
+      HeroKnight_31: 21300062
+      HeroKnight_32: 21300064
+      HeroKnight_33: 21300066
+      HeroKnight_34: 21300068
+      HeroKnight_35: 21300070
+      HeroKnight_36: 21300072
+      HeroKnight_37: 21300074
       HeroKnight_38: 21300076
       HeroKnight_39: 21300078
       HeroKnight_4: 21300008
-      HeroKnight_82: 21300164
-      HeroKnight_16: 21300032
-      HeroKnight_58: 21300116
-      HeroKnight_53: 21300106
-      HeroKnight_74: 21300148
-      HeroKnight_5: 21300010
-      HeroKnight_47: 21300094
-      HeroKnight_84: 21300168
-      HeroKnight_29: 21300058
-      HeroKnight_83: 21300166
-      HeroKnight_65: 21300130
-      HeroKnight_43: 21300086
-      HeroKnight_61: 21300122
-      HeroKnight_59: 21300118
-      HeroKnight_62: 21300124
-      HeroKnight_21: 21300042
-      HeroKnight_20: 21300040
-      HeroKnight_41: 21300082
-      HeroKnight_81: 21300162
-      HeroKnight_76: 21300152
-      HeroKnight_69: 21300138
-      HeroKnight_44: 21300088
-      HeroKnight_11: 21300022
-      HeroKnight_75: 21300150
-      HeroKnight_19: 21300038
-      HeroKnight_60: 21300120
-      HeroKnight_50: 21300100
-      HeroKnight_18: 21300036
-      HeroKnight_78: 21300156
       HeroKnight_40: 21300080
-      HeroKnight_46: 21300092
-      HeroKnight_12: 21300024
-      HeroKnight_79: 21300158
-      HeroKnight_56: 21300112
-      HeroKnight_71: 21300142
-      HeroKnight_67: 21300134
-      HeroKnight_37: 21300074
-      HeroKnight_31: 21300062
-      HeroKnight_89: 21300178
-      HeroKnight_26: 21300052
-      HeroKnight_27: 21300054
-      HeroKnight_30: 21300060
+      HeroKnight_41: 21300082
       HeroKnight_42: 21300084
-      HeroKnight_10: 21300020
-      HeroKnight_6: 21300012
-      HeroKnight_22: 21300044
-      HeroKnight_54: 21300108
-      HeroKnight_9: 21300018
-      HeroKnight_57: 21300114
-      HeroKnight_68: 21300136
-      HeroKnight_3: 21300006
-      HeroKnight_17: 21300034
-      HeroKnight_55: 21300110
-      HeroKnight_70: 21300140
-      HeroKnight_51: 21300102
-      HeroKnight_85: 21300170
-      HeroKnight_1: 21300002
-      HeroKnight_33: 21300066
+      HeroKnight_43: 21300086
+      HeroKnight_44: 21300088
       HeroKnight_45: 21300090
-      HeroKnight_23: 21300046
+      HeroKnight_46: 21300092
+      HeroKnight_47: 21300094
+      HeroKnight_48: 21300096
+      HeroKnight_49: 21300098
+      HeroKnight_5: 21300010
+      HeroKnight_50: 21300100
+      HeroKnight_51: 21300102
+      HeroKnight_52: 21300104
+      HeroKnight_53: 21300106
+      HeroKnight_54: 21300108
+      HeroKnight_55: 21300110
+      HeroKnight_56: 21300112
+      HeroKnight_57: 21300114
+      HeroKnight_58: 21300116
+      HeroKnight_59: 21300118
+      HeroKnight_6: 21300012
+      HeroKnight_60: 21300120
+      HeroKnight_61: 21300122
+      HeroKnight_62: 21300124
+      HeroKnight_63: 21300126
+      HeroKnight_64: 21300128
+      HeroKnight_65: 21300130
+      HeroKnight_66: 21300132
+      HeroKnight_67: 21300134
+      HeroKnight_68: 21300136
+      HeroKnight_69: 21300138
+      HeroKnight_7: 21300014
+      HeroKnight_70: 21300140
+      HeroKnight_71: 21300142
+      HeroKnight_72: 21300144
       HeroKnight_73: 21300146
+      HeroKnight_74: 21300148
+      HeroKnight_75: 21300150
+      HeroKnight_76: 21300152
+      HeroKnight_77: 21300154
+      HeroKnight_78: 21300156
+      HeroKnight_79: 21300158
+      HeroKnight_8: 21300016
+      HeroKnight_80: 21300160
+      HeroKnight_81: 21300162
+      HeroKnight_82: 21300164
+      HeroKnight_83: 21300166
+      HeroKnight_84: 21300168
+      HeroKnight_85: 21300170
       HeroKnight_86: 21300172
+      HeroKnight_87: 21300174
+      HeroKnight_88: 21300176
+      HeroKnight_89: 21300178
+      HeroKnight_9: 21300018
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

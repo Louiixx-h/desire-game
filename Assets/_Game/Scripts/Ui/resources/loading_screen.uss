@@ -1,0 +1,38 @@
+#parent-container {
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    background-color: var(--dark-color);
+}
+
+#top-container {
+    flex-grow: 4;
+}
+
+#bottom-container {
+    flex-grow: 1;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#loading-label {
+    font-size: 80px;
+    color: var(--primary-text-color);
+    -unity-text-align: middle-center;
+}
+
+#progress-bar {
+    margin: 0 32px 0 32px;
+}
+
+.unity-progress-bar {
+    background-color: #7a2c0e;
+}
+
+.unity-progress-bar__progress {
+    background-color: #e12525;
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:engine="UnityEngine.UIElements"
+        xsi:noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd"
+>
+    <Style src="project://database/Assets/Desire/Scripts/Ui/resources/gameplay_screen.uss?fileID=7433441132597879392&amp;guid=efb4ea8581f509245beefcd63a31b207&amp;type=3#gameplay_screen"/>
+    <engine:Style src="_root.uss"/>
+    <engine:VisualElement name="parent-contaienr">
+        <engine:VisualElement name="top-container">
+            <engine:VisualElement name="left">
+                <engine:VisualElement name="life-bar" class="progressBar--background">
+                    <engine:VisualElement name="overlay" class="progressBar--overlay"/>
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement name="right"/>
+        </engine:VisualElement>
+        <engine:VisualElement name="bottom-container"/>
+    </engine:VisualElement>
+</engine:UXML>

@@ -1,0 +1,55 @@
+#parent-container {
+    height: 100%;
+    width: 100%;
+    padding: 64px;
+    background-color: var(--dark-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#button-container {
+    width: 100%;
+    flex-grow: 2;
+    padding: 0 35% 0 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#presentation-container {
+    width: 100%;
+    flex-grow: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.primary-button {
+    height: 104px;
+}
+
+#title {
+    width: 100%;
+    color: var(--primary-text-color);
+    font-size: 128px;
+    -unity-text-align: middle-center;
+    -unity-font: url('project://database/Assets/advanced-pixel-7/advanced_pixel-7.ttf?fileID=12800000&guid=00d7d6f8b6ba86b498a679f127aa3a83&type=3#advanced_pixel-7');
+}
+
+#test-button {
+    width: 104px;
+    height: 104px;
+    position: absolute;
+    left: 24px;
+    bottom: 24px;
+    background-image: url('project://database/Assets/Fantasy%20Wooden%20GUI%20%20Free/normal_ui_set%20A/Exclamation_Gray.png?fileID=2800000&guid=f73f68fe6815f5548a6c2a61b9e49add&type=3#Exclamation_Gray');
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0;
+    -unity-font: initial;
+    transition: all 0.3s ease;
+}
+
+#test-button:hover {
+    scale: 1.1;
+}

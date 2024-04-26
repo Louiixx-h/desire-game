@@ -1,0 +1,30 @@
+{
+    "name": "UI",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:435d1a2c8df6a864b87b9e4dc8930ecc",
+        "GUID:8c9606c390444994fba57d12f935ab37",
+        "GUID:c4b42499f22bd4c4383b0bbf48a370af",
+        "GUID:43222332517edaa43b4691416a95df75"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [
+        "EmbeddedLinux",
+        "iOS",
+        "LinuxStandalone64",
+        "CloudRendering",
+        "macOSStandalone",
+        "PS4",
+        "PS5",
+        "Stadia",
+        "tvOS"
+    ],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" schemaLocation="../../../../../UIElementsSchema/UIElements.xsd file:/D:/Projects/game-dev/desire-game/UIElementsSchema/../../../../../UIElementsSchema/UIElements.xsd.xsd" editor-extension-mode="False">
+    <ui:Template name="backButton" src="project://database/Assets/Desire/Scripts/Ui/resources/back_button.uxml?fileID=9197481963319205126&amp;guid=25948a59963045449ce796636bc3f7d7&amp;type=3#back_button" />
+    <Style src="project://database/Assets/Desire/Scripts/Ui/resources/_root.uss?fileID=7433441132597879392&amp;guid=60105ed791734c9d8950a63d2413a0a1&amp;type=3#_root" />
+    <Style src="project://database/Assets/Desire/Scripts/Ui/resources/back_button.uss?fileID=7433441132597879392&amp;guid=b5d332a63d604bd288e4c340e6f36e80&amp;type=3#back_button" />
+    <Style src="project://database/Assets/Desire/Scripts/Ui/resources/configuration_screen.uss?fileID=7433441132597879392&amp;guid=8182e38f4c23d2b498d1521783d70f04&amp;type=3#configuration_screen" />
+    <ui:VisualElement name="parent-container">
+        <ui:VisualElement name="top-container">
+            <ui:Label text="Configurações" name="title" />
+        </ui:VisualElement>
+        <ui:VisualElement name="bottom-container"/>
+        <ui:Instance template="backButton" name="back-button" />
+    </ui:VisualElement>
+</ui:UXML>

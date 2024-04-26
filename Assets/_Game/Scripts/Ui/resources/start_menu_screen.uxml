@@ -1,0 +1,26 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="PrimaryButton" src="project://database/Assets/Desire/Scripts/Ui/resources/primary_button.uxml?fileID=9197481963319205126&amp;guid=394375ed9c4c42339019ce879c4796cb&amp;type=3#primary_button" />
+    <Style src="project://database/Assets/Desire/Scripts/Ui/resources/primary_button.uss?fileID=7433441132597879392&amp;guid=593c9c1f7a0e4c96b7984d5479101da5&amp;type=3#primary_button" />
+    <Style src="project://database/Assets/Desire/Scripts/Ui/resources/_root.uss?fileID=7433441132597879392&amp;guid=60105ed791734c9d8950a63d2413a0a1&amp;type=3#_root" />
+    <Style src="project://database/Assets/Desire/Scripts/Ui/resources/start_menu_screen.uss?fileID=7433441132597879392&amp;guid=4a186b0ac4cac5c41ae1cf444f94784c&amp;type=3#start_menu_screen" />
+    <ui:VisualElement name="parent-container">
+        <ui:VisualElement name="presentation-container">
+            <ui:Label text="Dersire" name="title" />
+        </ui:VisualElement>
+        <ui:VisualElement name="button-container">
+            <ui:Instance template="PrimaryButton" name="start-button">
+                <AttributeOverrides element-name="primary-button" text="Continuar" />
+            </ui:Instance>
+            <ui:Instance template="PrimaryButton" name="new-button">
+                <AttributeOverrides element-name="primary-button" text="Novo jogo" />
+            </ui:Instance>
+            <ui:Instance template="PrimaryButton" name="config-button">
+                <AttributeOverrides element-name="primary-button" text="Configurações" />
+            </ui:Instance>
+            <ui:Instance template="PrimaryButton" name="exit-button">
+                <AttributeOverrides element-name="primary-button" text="Sair do jogo" />
+            </ui:Instance>
+        </ui:VisualElement>
+        <ui:Button name="test-button" />
+    </ui:VisualElement>
+</ui:UXML>
