@@ -5,25 +5,9 @@
 
 # Desire
 
-Bem-vindo ao Desire, um jogo de plataforma 2D emocionante e desafiador de múltiplas escolhas. Neste jogo, você assumirá o papel de um personagem com um forte desejo de alcançar seu objetivo final.
+Welcome to Desire, an exciting and challenging 2D multiple choice platformer. In this game, you will take on the role of a character with a strong desire to achieve their ultimate goal.
+You will have the opportunity to make important choices throughout the game, which will affect the ending. Choose wisely, as each choice can completely change the outcome of the game.
+Desire is an exciting game that will test your skills and decisions. Are you ready to take on the challenge and achieve your ultimate desire? Download now and start playing!
 
-Você terá a oportunidade de fazer escolhas importantes ao longo do jogo, o que afetará o final. Escolha sabiamente, pois cada escolha pode mudar completamente o resultado do jogo.
-
-Desire é um jogo emocionante que irá testar suas habilidades e decisões. Você está pronto para assumir o desafio e alcançar seu desejo final? Baixe agora e comece a jogar!
-
-<img src="./github/images/Untitled.png"/>
-
-### 🏃‍♀️Basic move
-
-- [x] Walk
-- [x] Run
-- [x] Jump
-- [x] Fight
-
-### 💻Learned skills
-- [x] Unity
-- [x] CSharp
-- [x] Movement 2D
-- [x] Cinemachine
-- [x] Animator
-- [x] Animation
+### 👇Click on image to watch the video.
+[![Assista a o vídeo!](https://img.youtube.com/vi/OBazf3XSObM/maxresdefault.jpg)](https://youtu.be/OBazf3XSObM)
